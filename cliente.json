@@ -1,0 +1,920 @@
+{
+ "$schema": "https://raw.githubusercontent.com/AlejoMFernandez/kit-demos/main/docs/cliente.schema.json",
+ "id": "ru-pasteleria",
+ "nombre": "RU · Pastelería & Café",
+ "pais": "AR",
+ "idioma": "es",
+ "modo": "demo",
+ "demoVersion": 1,
+ "whatsapp": "5491134367019",
+ "instagram": "rupasteleriaycafe",
+ "prefijoPedido": "RU",
+ "supabase": {
+  "url": "",
+  "anonKey": ""
+ },
+ "marca": {
+  "logo": "img/logo-verde.png",
+  "logoPanel": "img/logo-blanco.png",
+  "favicon": "img/favicon.png",
+  "logoClaro": "img/logo-blanco.png",
+  "isotipo": "",
+  "colores": {
+   "fondo": "#F4F2EE",
+   "superficie": "#FFFFFF",
+   "texto": "#1F3A28",
+   "primario": "#2B6734",
+   "acento": "#E7B7C3",
+   "borde": "#D9D6CE"
+  },
+  "fuentes": {
+   "titulos": "'Gloock', Georgia, serif",
+   "texto": "'Albert Sans', system-ui, sans-serif",
+   "googleFonts": ""
+  },
+  "estilo": {
+   "forma": "recta",
+   "sombra": "suave",
+   "borde": "1px",
+   "mayusculas": false
+  }
+ },
+ "modulos": {
+  "carta": true,
+  "carrito": true,
+  "reservas": true,
+  "admin": true,
+  "cartaQR": true,
+  "tienda": true
+ },
+ "horarios": {
+  "lun": [],
+  "mar": [
+   [
+    "09:00",
+    "16:00"
+   ]
+  ],
+  "mie": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "jue": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "vie": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "sab": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "dom": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ]
+ },
+ "pedidos": {
+  "salidas": [
+   "mercadopago",
+   "whatsapp"
+  ],
+  "tipos": [
+   "retiro"
+  ],
+  "envio": 0,
+  "minimo": 0,
+  "encargo": {
+   "anticipacionHoras": 48,
+   "diasAdelante": 21,
+   "franjas": [
+    {
+     "id": "manana",
+     "nombre": "Mañana",
+     "desde": "09:00",
+     "hasta": "13:00"
+    },
+    {
+     "id": "tarde",
+     "nombre": "Tarde",
+     "desde": "15:00",
+     "hasta": "20:00"
+    }
+   ]
+  }
+ },
+ "pagos": {
+  "mercadopago": {
+   "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference",
+   "modo": "sandbox"
+  }
+ },
+ "reservas": {
+  "maxPersonas": 6,
+  "anticipacionMin": 120,
+  "diasAdelante": 90
+ },
+ "eventosTipos": [
+  {
+   "id": "workshop",
+   "nombre": "Workshop"
+  },
+  {
+   "id": "cena",
+   "nombre": "Cena"
+  }
+ ],
+ "eventos": [
+  {
+   "id": "acuarela-1129",
+   "tipo": "workshop",
+   "nombre": "Acuarela botánica",
+   "fecha": "2026-11-29",
+   "hora": "10:00",
+   "cupo": 12,
+   "precio": 38000,
+   "descripcion": "Una mañana para pintar flores y hojas, paso a paso, en la galería de la casa.",
+   "reserva": true
+  },
+  {
+   "id": "ramos-1206",
+   "tipo": "workshop",
+   "nombre": "Armado de ramos",
+   "fecha": "2026-12-06",
+   "hora": "10:30",
+   "cupo": 10,
+   "precio": 42000,
+   "descripcion": "Flores de estación, follajes y técnica para armar tu ramo y llevártelo.",
+   "reserva": true
+  },
+  {
+   "id": "foto-1213",
+   "tipo": "workshop",
+   "nombre": "Tengo cámara, ¿y ahora qué?",
+   "fecha": "2026-12-13",
+   "hora": "16:00",
+   "cupo": 12,
+   "precio": 45000,
+   "descripcion": "Taller de fotografía para aprender a mirar y disfrutar el proceso, entre las mesas largas de la casa.",
+   "reserva": true
+  },
+  {
+   "id": "cena-1219",
+   "tipo": "cena",
+   "nombre": "Cena con chef invitado",
+   "fecha": "2026-12-19",
+   "hora": "20:30",
+   "cupo": 24,
+   "precio": 75000,
+   "descripcion": "Menú por pasos con maridaje de vinos, en la mesa larga de la casa. Cupos limitados.",
+   "reserva": true
+  }
+ ],
+ "carta": {
+  "categorias": [
+   {
+    "id": "pasteleria",
+    "nombre": "Pastelería"
+   },
+   {
+    "id": "a-toda-hora",
+    "nombre": "A toda hora"
+   },
+   {
+    "id": "sandwiches",
+    "nombre": "Sándwiches"
+   },
+   {
+    "id": "lunch",
+    "nombre": "Lunch"
+   },
+   {
+    "id": "brunch",
+    "nombre": "Brunch & partners"
+   },
+   {
+    "id": "cafe",
+    "nombre": "Café"
+   },
+   {
+    "id": "frias",
+    "nombre": "Jarras y bebidas"
+   },
+   {
+    "id": "t-tortas",
+    "nombre": "Tortas enteras",
+    "tienda": true,
+    "anticipacionHoras": 48,
+    "sena": 0.5
+   },
+   {
+    "id": "t-boxes",
+    "nombre": "Boxes",
+    "tienda": true,
+    "anticipacionHoras": 48,
+    "sena": 0.5
+   }
+  ],
+  "productos": [
+   {
+    "id": "th-0",
+    "categoria": "a-toda-hora",
+    "nombre": "Tostado classic",
+    "precio": null,
+    "descripcion": "Pan de molde, jamón natural y queso."
+   },
+   {
+    "id": "th-1",
+    "categoria": "a-toda-hora",
+    "nombre": "Avocado toast",
+    "precio": null,
+    "descripcion": "Pan de masa madre, palta, limón y huevo poché."
+   },
+   {
+    "id": "th-2",
+    "categoria": "a-toda-hora",
+    "nombre": "Revueltos",
+    "precio": null,
+    "descripcion": "Huevos, palta y tostada de pan de masa madre."
+   },
+   {
+    "id": "th-3",
+    "categoria": "a-toda-hora",
+    "nombre": "Tostadas",
+    "precio": null,
+    "descripcion": "Pan de masa madre con mermelada casera y queso crema."
+   },
+   {
+    "id": "th-4",
+    "categoria": "a-toda-hora",
+    "nombre": "Tostón poché",
+    "precio": null,
+    "descripcion": "Pan de masa madre, aceite de oliva, hummus de tomate seco, palta, huevo poché y cebollas encurtidas.",
+    "foto": "img/c-bpoche.webp"
+   },
+   {
+    "id": "th-5",
+    "categoria": "a-toda-hora",
+    "nombre": "Tostón fungi",
+    "precio": null,
+    "descripcion": "Pan de masa madre, aceite de oliva, hummus de tomate seco, hongos y tomates salteados."
+   },
+   {
+    "id": "th-6",
+    "categoria": "a-toda-hora",
+    "nombre": "French toast",
+    "precio": null,
+    "descripcion": "Con frutas de estación y miel."
+   },
+   {
+    "id": "th-7",
+    "categoria": "a-toda-hora",
+    "nombre": "Yogurt natural",
+    "precio": null,
+    "descripcion": "Con granola, frutas de estación y miel.",
+    "foto": "img/c-byogurt.webp"
+   },
+   {
+    "id": "th-8",
+    "categoria": "a-toda-hora",
+    "nombre": "Frutas de estación",
+    "precio": null,
+    "descripcion": "Frutas, hierbas aromáticas y miel."
+   },
+   {
+    "id": "th-9",
+    "categoria": "a-toda-hora",
+    "nombre": "Croissants",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "th-10",
+    "categoria": "a-toda-hora",
+    "nombre": "Croissant rellena",
+    "precio": null,
+    "descripcion": "Con jamón natural y queso."
+   },
+   {
+    "id": "th-11",
+    "categoria": "a-toda-hora",
+    "nombre": "Medialunas",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "th-12",
+    "categoria": "a-toda-hora",
+    "nombre": "Pan de chocolate",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "th-13",
+    "categoria": "a-toda-hora",
+    "nombre": "Cookies",
+    "precio": null,
+    "descripcion": "Chocolate · vainilla con chips de chocolate · veggie (avena, vainilla y chips). Consultá por las especiales del día."
+   },
+   {
+    "id": "pa-0",
+    "categoria": "pasteleria",
+    "nombre": "Key de lima",
+    "precio": null,
+    "descripcion": "Base de masa sableé, crema de lima y merengue.",
+    "foto": "img/c-lima.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "pa-1",
+    "categoria": "pasteleria",
+    "nombre": "Rogel",
+    "precio": null,
+    "descripcion": "Dulce de leche y merengue.",
+    "foto": "img/c-rogel.webp"
+   },
+   {
+    "id": "pa-2",
+    "categoria": "pasteleria",
+    "nombre": "Choco cake",
+    "precio": null,
+    "descripcion": "Húmedo de chocolate y ganache montada de chocolate.",
+    "foto": "img/c-choco.webp"
+   },
+   {
+    "id": "pa-3",
+    "categoria": "pasteleria",
+    "nombre": "Torta vasca",
+    "precio": null,
+    "descripcion": "La que no paran de pedir.",
+    "foto": "img/c-vasca.webp",
+    "etiquetas": [
+     "nuevo"
+    ]
+   },
+   {
+    "id": "pa-4",
+    "categoria": "pasteleria",
+    "nombre": "Crumble de manzana",
+    "precio": null,
+    "descripcion": "Base de masa sableé, compota de manzana especiada y crumble.",
+    "foto": "img/c-crumble.webp"
+   },
+   {
+    "id": "pa-5",
+    "categoria": "pasteleria",
+    "nombre": "Brownie cake",
+    "precio": null,
+    "descripcion": "Brownie con nuez, dulce de leche, crema y frutas de estación.",
+    "foto": "img/c-brownie.webp"
+   },
+   {
+    "id": "pa-6",
+    "categoria": "pasteleria",
+    "nombre": "Key de pistachos",
+    "precio": null,
+    "descripcion": "Base de masa sableé, frangipane de pistacho, confitura de frutos rojos y merengue."
+   },
+   {
+    "id": "pa-7",
+    "categoria": "pasteleria",
+    "nombre": "Carrot cake",
+    "precio": null,
+    "descripcion": "Húmedo de zanahoria con frosting de queso especiado."
+   },
+   {
+    "id": "pa-8",
+    "categoria": "pasteleria",
+    "nombre": "Cheesecake de maracuyá",
+    "precio": null,
+    "descripcion": "Base crocante, cremoso de queso con salsa de maracuyá."
+   },
+   {
+    "id": "pa-9",
+    "categoria": "pasteleria",
+    "nombre": "Cheesecake de frutos rojos",
+    "precio": null,
+    "descripcion": "Base crocante, cremoso de queso con salsa de frutos rojos."
+   },
+   {
+    "id": "pa-10",
+    "categoria": "pasteleria",
+    "nombre": "Alfajores",
+    "precio": null,
+    "descripcion": "Nuez con dulce de leche · limón · maicena sin TACC · coco sin TACC · pistachos."
+   },
+   {
+    "id": "pa-11",
+    "categoria": "pasteleria",
+    "nombre": "Budines",
+    "precio": null,
+    "descripcion": "Consultá por los gustos del día y opciones sin TACC."
+   },
+   {
+    "id": "pa-12",
+    "categoria": "pasteleria",
+    "nombre": "Scons",
+    "precio": null,
+    "descripcion": "Dulce · queso."
+   },
+   {
+    "id": "pa-13",
+    "categoria": "pasteleria",
+    "nombre": "Brownie",
+    "precio": null,
+    "descripcion": "Con nuez."
+   },
+   {
+    "id": "sa-0",
+    "categoria": "sandwiches",
+    "nombre": "Sándwich veggie",
+    "precio": null,
+    "descripcion": "Vegetales y tomates asados, queso y pesto en focaccia o pan de queso."
+   },
+   {
+    "id": "sa-1",
+    "categoria": "sandwiches",
+    "nombre": "Sándwich de pollo",
+    "precio": null,
+    "descripcion": "Pollo desmechado, mix de lechugas y salsa caesar en focaccia o pan de queso.",
+    "foto": "img/c-blunch.webp"
+   },
+   {
+    "id": "sa-2",
+    "categoria": "sandwiches",
+    "nombre": "Sándwich de carne",
+    "precio": null,
+    "descripcion": "Ternera desmechada, tomates asados, queso y pesto en focaccia o pan de queso."
+   },
+   {
+    "id": "sa-3",
+    "categoria": "sandwiches",
+    "nombre": "Sándwich de jamón crudo",
+    "precio": null,
+    "descripcion": "Jamón crudo, queso pategrás y pesto en pan ciabatta."
+   },
+   {
+    "id": "sa-4",
+    "categoria": "sandwiches",
+    "nombre": "Sándwich de atún",
+    "precio": null,
+    "descripcion": "Lomitos de atún, cebolla morada, cherrys y lechuga con mayonesa en pan integral."
+   },
+   {
+    "id": "lu-0",
+    "categoria": "lunch",
+    "nombre": "Caesar salad",
+    "precio": null,
+    "descripcion": "Pollo, mix de lechugas, crutones, reggianito y salsa caesar."
+   },
+   {
+    "id": "lu-1",
+    "categoria": "lunch",
+    "nombre": "Pasta salad",
+    "precio": null,
+    "descripcion": "Penne rigate, cherrys, pepino, cebolla morada, aceitunas negras, choclo, rabanito, zucchini, morrón y queso azul. Aderezo de queso crema, cilantro y limón."
+   },
+   {
+    "id": "lu-2",
+    "categoria": "lunch",
+    "nombre": "Veggie salad",
+    "precio": null,
+    "descripcion": "Verdes, calabaza asada, garbanzos, cebolla morada, pepino, choclo, cherry, queso azul o tofu, nueces y semillas. Aderezo de pesto."
+   },
+   {
+    "id": "lu-3",
+    "categoria": "lunch",
+    "nombre": "Tartas",
+    "precio": null,
+    "descripcion": "Jamón natural, queso y tomate · pollo y puerro · calabaza horneada. Con ensalada."
+   },
+   {
+    "id": "br-0",
+    "categoria": "brunch",
+    "nombre": "Brunch RU",
+    "precio": null,
+    "descripcion": "Una porción de torta a elección, una croissant, un scon de queso, dos bowls de yogurt con granola, frutas y miel, una porción de budín, dos infusiones calientes y dos shots de jugo de naranja.",
+    "foto": "img/c-btoston.webp"
+   },
+   {
+    "id": "br-1",
+    "categoria": "brunch",
+    "nombre": "Brunch classic",
+    "precio": null,
+    "descripcion": "Una porción de torta a elección, un tostado de jamón natural y queso, dos infusiones calientes y dos shots de jugo de naranja."
+   },
+   {
+    "id": "br-2",
+    "categoria": "brunch",
+    "nombre": "Lunch",
+    "precio": null,
+    "descripcion": "Tarta del día con ensalada y bebida (gaseosa o agua)."
+   },
+   {
+    "id": "br-3",
+    "categoria": "brunch",
+    "nombre": "Porteño",
+    "precio": null,
+    "descripcion": "Dos medialunas e infusión caliente."
+   },
+   {
+    "id": "br-4",
+    "categoria": "brunch",
+    "nombre": "Nonna",
+    "precio": null,
+    "descripcion": "Porción de budín e infusión caliente."
+   },
+   {
+    "id": "br-5",
+    "categoria": "brunch",
+    "nombre": "Sweet",
+    "precio": null,
+    "descripcion": "Scon dulce con queso crema y mermelada casera, e infusión caliente."
+   },
+   {
+    "id": "cf-0",
+    "categoria": "cafe",
+    "nombre": "Ristretto",
+    "precio": null,
+    "descripcion": "Espresso corto, 25 ml."
+   },
+   {
+    "id": "cf-1",
+    "categoria": "cafe",
+    "nombre": "Espresso",
+    "precio": null,
+    "descripcion": "En jarrito, 40 ml."
+   },
+   {
+    "id": "cf-2",
+    "categoria": "cafe",
+    "nombre": "Lungo",
+    "precio": null,
+    "descripcion": "Espresso mediano, 110 ml."
+   },
+   {
+    "id": "cf-3",
+    "categoria": "cafe",
+    "nombre": "Lungo cortado",
+    "precio": null,
+    "descripcion": "Espresso con leche, 110 ml."
+   },
+   {
+    "id": "cf-4",
+    "categoria": "cafe",
+    "nombre": "Americano",
+    "precio": null,
+    "descripcion": "Espresso mediano doble, 184 ml."
+   },
+   {
+    "id": "cf-5",
+    "categoria": "cafe",
+    "nombre": "Café con leche",
+    "precio": null,
+    "descripcion": "Mitad café, mitad leche, en tazón."
+   },
+   {
+    "id": "cf-6",
+    "categoria": "cafe",
+    "nombre": "Latte macchiato",
+    "precio": null,
+    "descripcion": "¼ café, ¾ leche, 184 ml (también XL en tazón)."
+   },
+   {
+    "id": "cf-7",
+    "categoria": "cafe",
+    "nombre": "Chocolatada",
+    "precio": null,
+    "descripcion": "Fría o caliente."
+   },
+   {
+    "id": "cf-8",
+    "categoria": "cafe",
+    "nombre": "Té",
+    "precio": null,
+    "descripcion": "Consultá las variedades."
+   },
+   {
+    "id": "cf-9",
+    "categoria": "cafe",
+    "nombre": "Iced capuccino",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada y hielo."
+   },
+   {
+    "id": "cf-10",
+    "categoria": "cafe",
+    "nombre": "Mocca latte",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada, salsa de chocolate y cacao."
+   },
+   {
+    "id": "cf-11",
+    "categoria": "cafe",
+    "nombre": "Vainilla latte",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada y syrup de vainilla."
+   },
+   {
+    "id": "cf-12",
+    "categoria": "cafe",
+    "nombre": "Caramel latte",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada, syrup de caramelo y canela."
+   },
+   {
+    "id": "cf-13",
+    "categoria": "cafe",
+    "nombre": "Dulce de leche macchiato",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada, dulce de leche y canela."
+   },
+   {
+    "id": "cf-14",
+    "categoria": "cafe",
+    "nombre": "Coconut",
+    "precio": null,
+    "descripcion": "Espresso, leche espumada y syrup de coco."
+   },
+   {
+    "id": "cf-15",
+    "categoria": "cafe",
+    "nombre": "Espresso tonic",
+    "precio": null,
+    "descripcion": "Agua tónica, café y hielo."
+   },
+   {
+    "id": "cf-16",
+    "categoria": "cafe",
+    "nombre": "Espresso orange",
+    "precio": null,
+    "descripcion": "Jugo de naranja, café, hielo y azúcar."
+   },
+   {
+    "id": "fr-0",
+    "categoria": "frias",
+    "nombre": "Limonada",
+    "precio": null,
+    "descripcion": "Jarra, con menta y jengibre."
+   },
+   {
+    "id": "fr-1",
+    "categoria": "frias",
+    "nombre": "Pomelada",
+    "precio": null,
+    "descripcion": "Jarra, con menta y jengibre."
+   },
+   {
+    "id": "fr-2",
+    "categoria": "frias",
+    "nombre": "Naranjada",
+    "precio": null,
+    "descripcion": "Jarra, con menta y jengibre."
+   },
+   {
+    "id": "fr-3",
+    "categoria": "frias",
+    "nombre": "Frutos rojos",
+    "precio": null,
+    "descripcion": "Jarra, con menta y jengibre."
+   },
+   {
+    "id": "fr-4",
+    "categoria": "frias",
+    "nombre": "Licuado",
+    "precio": null,
+    "descripcion": "Jarra o vaso, a base de jugo de naranja con frutas de estación."
+   },
+   {
+    "id": "fr-5",
+    "categoria": "frias",
+    "nombre": "Gaseosa",
+    "precio": null,
+    "descripcion": "Línea Coca-Cola."
+   },
+   {
+    "id": "fr-6",
+    "categoria": "frias",
+    "nombre": "Agua",
+    "precio": null,
+    "descripcion": "Con o sin gas."
+   },
+   {
+    "id": "fr-7",
+    "categoria": "frias",
+    "nombre": "Stella Artois 330 cc",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "fr-8",
+    "categoria": "frias",
+    "nombre": "Fernet Branca",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "fr-9",
+    "categoria": "frias",
+    "nombre": "Gin tonic",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "fr-10",
+    "categoria": "frias",
+    "nombre": "Campari orange",
+    "precio": null,
+    "descripcion": ""
+   },
+   {
+    "id": "te-0",
+    "categoria": "t-tortas",
+    "nombre": "Key de lima",
+    "precio": 60000,
+    "descripcion": "Base de masa sableé, curd de lima y crema.",
+    "foto": "img/c-lima.webp"
+   },
+   {
+    "id": "te-1",
+    "categoria": "t-tortas",
+    "nombre": "Rogel",
+    "precio": 58000,
+    "descripcion": "Dulce de leche y merengue.",
+    "foto": "img/c-rogel.webp"
+   },
+   {
+    "id": "te-2",
+    "categoria": "t-tortas",
+    "nombre": "Choco cake",
+    "precio": 62000,
+    "descripcion": "Húmedo de chocolate, ganache montada de chocolate.",
+    "foto": "img/c-choco.webp"
+   },
+   {
+    "id": "te-3",
+    "categoria": "t-tortas",
+    "nombre": "Crumble de manzana",
+    "precio": 56000,
+    "descripcion": "Base de masa sableé, compota de manzana especiada y crumble.",
+    "foto": "img/c-crumble.webp"
+   },
+   {
+    "id": "te-4",
+    "categoria": "t-tortas",
+    "nombre": "Key de frutos",
+    "precio": 64000,
+    "descripcion": "Base de masa sableé, crema diplomata y frutos de estación.",
+    "foto": "img/c-frutos.webp"
+   },
+   {
+    "id": "te-5",
+    "categoria": "t-tortas",
+    "nombre": "Brownie",
+    "precio": 62000,
+    "descripcion": "Con nuez, dulce de leche, crema y frutos de estación.",
+    "foto": "img/c-brownie.webp"
+   },
+   {
+    "id": "te-6",
+    "categoria": "t-tortas",
+    "nombre": "Key de maracuyá",
+    "precio": 60000,
+    "descripcion": "Base de masa sableé, curd de maracuyá y crema."
+   },
+   {
+    "id": "te-7",
+    "categoria": "t-tortas",
+    "nombre": "Carrot cake",
+    "precio": 60000,
+    "descripcion": "Húmedo de zanahoria con frosting de queso especiado."
+   },
+   {
+    "id": "te-8",
+    "categoria": "t-tortas",
+    "nombre": "Cheesecake de maracuyá",
+    "precio": 66000,
+    "descripcion": "Base crocante, cremoso de queso con salsa de maracuyá."
+   },
+   {
+    "id": "te-9",
+    "categoria": "t-tortas",
+    "nombre": "Cheesecake de frutos rojos",
+    "precio": 66000,
+    "descripcion": "Base crocante, cremoso de queso con salsa de frutos rojos."
+   },
+   {
+    "id": "te-10",
+    "categoria": "t-tortas",
+    "nombre": "Pera & frangipane",
+    "precio": 64000,
+    "descripcion": "Base de masa sableé, peras pochadas y especiadas sobre crema frangipane de almendras."
+   },
+   {
+    "id": "bx-0",
+    "categoria": "t-boxes",
+    "nombre": "Box mix bocaditos",
+    "precio": 30000,
+    "descripcion": "4 mini bocaditos de brownie, 4 de carrot y 4 de pavlova.",
+    "foto": "img/c-ebox.webp"
+   },
+   {
+    "id": "bx-1",
+    "categoria": "t-boxes",
+    "nombre": "Minis sándwich de jamón y queso",
+    "precio": 28000,
+    "descripcion": "12 mini sándwiches de jamón natural y queso en pan de queso.",
+    "foto": "img/c-eminis.webp"
+   },
+   {
+    "id": "bx-2",
+    "categoria": "t-boxes",
+    "nombre": "Bocaditos carrot",
+    "precio": 30000,
+    "descripcion": "12 bocaditos de húmedo de zanahoria con frosting de queso especiado.",
+    "foto": "img/c-emesa.webp"
+   },
+   {
+    "id": "bx-3",
+    "categoria": "t-boxes",
+    "nombre": "Minis sándwich de carne",
+    "precio": 32000,
+    "descripcion": "12 mini sándwiches de ternera desmechada, queso y pesto en pan de queso.",
+    "foto": "img/c-ebox2.webp"
+   },
+   {
+    "id": "bx-4",
+    "categoria": "t-boxes",
+    "nombre": "Bocaditos brownie",
+    "precio": 30000,
+    "descripcion": "12 bocaditos de brownie con nuez, dulce de leche, crema y frutos de estación."
+   },
+   {
+    "id": "bx-5",
+    "categoria": "t-boxes",
+    "nombre": "Bocaditos pavlova",
+    "precio": 32000,
+    "descripcion": "12 bocaditos de merengue crocante, crema de lima y frutos de estación."
+   },
+   {
+    "id": "bx-6",
+    "categoria": "t-boxes",
+    "nombre": "Minis brownie",
+    "precio": 24000,
+    "descripcion": "12 cuadraditos de brownie con nuez."
+   },
+   {
+    "id": "bx-7",
+    "categoria": "t-boxes",
+    "nombre": "Minis scons de queso",
+    "precio": 22000,
+    "descripcion": "18 mini scons de queso."
+   },
+   {
+    "id": "bx-8",
+    "categoria": "t-boxes",
+    "nombre": "Fosforitos",
+    "precio": 24000,
+    "descripcion": "12 fosforitos de hojaldre azucarado, jamón natural y queso."
+   },
+   {
+    "id": "bx-9",
+    "categoria": "t-boxes",
+    "nombre": "Minis sándwich de pollo",
+    "precio": 30000,
+    "descripcion": "12 mini sándwiches de pollo desmechado, lechugas y salsa caesar en pan de queso."
+   },
+   {
+    "id": "bx-10",
+    "categoria": "t-boxes",
+    "nombre": "Minis sándwich veggie",
+    "precio": 28000,
+    "descripcion": "12 mini sándwiches de vegetales y tomates asados, queso y pesto en focaccia."
+   }
+  ]
+ },
+ "textos": {
+  "tuPedido": "Tu encargo",
+  "verPedido": "Ver encargo",
+  "carritoVacio": "Todavía no sumaste nada a tu encargo.",
+  "carritoVacioSub": "Sumá una torta entera o un box y aparece acá.",
+  "enviarPedido": "Enviar encargo",
+  "pedidoListo": "¡Encargo enviado!",
+  "pedidoPagadoSub": "Encargo {codigo} con la seña paga. Te esperamos el día del retiro.",
+  "reservarMesa": "Reservá tu lugar"
+ }
+}
