@@ -413,3 +413,27 @@ html.oculta-pill .kit-demo-pill{opacity:0;pointer-events:none;transform:translat
 .mas{justify-self:start;min-height:44px;padding:10px 0;border:0;background:none;color:var(--verde);font:600 15px/1 var(--s);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .tienda [data-kit-qty]{--kit-qty-w:112px;--kit-qty-h:44px;width:112px}
 html.kit-lock-ru .kit-demo-pill,html.kit-lock-ru .barra{opacity:0;pointer-events:none}
+
+/* ---- correcciones del revisor ---- */
+@media (max-width:899px){
+  .reglas{position:static;margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .encargos__foto{aspect-ratio:auto;overflow:visible}
+  .encargos__foto img{aspect-ratio:4/3;height:auto}
+  .encargos__foto .panos{bottom:auto;aspect-ratio:4/3}
+  .invita{bottom:auto;top:10px}
+  .lugar:nth-child(1){top:56px}.lugar:nth-child(2){top:190px}.lugar:nth-child(3){top:324px}.lugar:nth-child(4){top:458px}
+  .ficha__foto{aspect-ratio:2/1}
+  html.ficha-abierta .barra{opacity:0;pointer-events:none}
+}
+.tablon__madera::after{content:"";position:absolute;inset:0;z-index:5;background:rgba(24,16,8,.5);opacity:0;pointer-events:none;transition:opacity .3s}
+.tablon__madera.con-ficha::after{opacity:1}
+.puerta__manija,.puerta__reja{transition:opacity .2s}
+@media (min-width:900px){
+  .vitrina__grilla .pieza--carta{grid-column:span 2;aspect-ratio:auto}
+  .barra a.activa::after{opacity:1;transform:translate(0,-50%)}
+  .hermanas{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hermanas__txt{max-width:44rem}
+  .hermanas__fotos{gap:20px}
+  .hermanas__fotos figure:nth-child(2){transform:translateY(36px)}
+}
+@media (max-width:899px){html:not(.oculta-pill) .barra{opacity:0;pointer-events:none}}

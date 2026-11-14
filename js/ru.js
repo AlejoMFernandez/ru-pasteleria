@@ -58,7 +58,7 @@ if (html.classList.contains('con-intro') && intro) {
     const r = $('.puerta').getBoundingClientRect();
     intro.classList.add('vuela');
     intro.style.transform = `translate(${r.left}px, ${r.top}px) scale(${r.width / innerWidth}, ${r.height / innerHeight})`;
-    setTimeout(() => { abrirHero(); intro.classList.add('fuera'); setTimeout(terminarIntro, 220); }, 520);
+    setTimeout(() => { abrirHero(); intro.classList.add('fuera'); setTimeout(terminarIntro, 220); }, 320);
   });
 } else { abrirHero(); terminarIntro(); }
 
@@ -66,6 +66,7 @@ if (html.classList.contains('con-intro') && intro) {
 const heroA = $('.heroA');
 if (!reducido) {
   const puerta = $('.puerta');
+  const manija = $('.puerta__manija'), reja = $('.puerta__reja');
   const resto = [$('.heroA__texto'), $('.heroA__rotulos'), $('.cartel'), $('.farol')];
   let pend = false;
   const pintar = () => {
@@ -81,6 +82,7 @@ if (!reducido) {
     puerta.style.transform = p > 0 ? `translate(${dx * ease}px, ${dy * ease}px) scale(${1 + (S - 1) * ease})` : '';
     const o = Math.max(0, 1 - p * 3);
     resto.forEach(el => { el.style.opacity = o; el.style.visibility = o < .02 ? 'hidden' : ''; });
+    const om = Math.max(0, 1 - p * 2.2); manija.style.opacity = om; reja.style.opacity = Math.max(0, 1 - p * 1.4);
   };
   addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(pintar); } }, { passive: true });
   addEventListener('resize', () => requestAnimationFrame(pintar));
@@ -91,11 +93,14 @@ const barra = $('[data-barra]');
 new IntersectionObserver(([en]) => barra.classList.toggle('ver', !en.isIntersecting), { rootMargin: '0px 0px -40% 0px' }).observe(heroA);
 const visibles = new Set();
 const celu = matchMedia('(max-width: 899px)');
+// en el celu la píldora del panel solo aparece al final (cómo llegar y pie), así no tapa nada con la barra
+const finales = new Set([$('#llegar'), $('.pie')]);
 const ojoPill = new IntersectionObserver(ens => {
   ens.forEach(en => en.isIntersecting ? visibles.add(en.target) : visibles.delete(en.target));
-  html.classList.toggle('oculta-pill', celu.matches && visibles.size > 0);
+  const alFinal = [...visibles].some(v => finales.has(v)), tapa = [...visibles].some(v => !finales.has(v));
+  html.classList.toggle('oculta-pill', celu.matches ? !alFinal : tapa);
 }, { threshold: .15 });
-[heroA, $('.tablon'), $('.pie')].forEach(el => ojoPill.observe(el));
+[heroA, $('.tablon'), $('#llegar'), $('.pie')].forEach(el => ojoPill.observe(el));
 
 /* ---------- entradas al scrollear ---------- */
 const io = new IntersectionObserver(ens => ens.forEach(en => {
@@ -229,7 +234,8 @@ async function abrirFicha(i, desde) {
   f('precio').textContent = ev.precio ? `${plata(ev.precio)} por persona` : 'Precio a confirmar';
   const img = f('foto'); img.src = fotoEv(ev, i); img.alt = ev.nombre;
   const fig = $('.ficha__foto', ficha); fig.classList.remove('visto');
-  ficha.hidden = false; invita.classList.add('chau');
+  ficha.hidden = false; invita.classList.add('chau'); $('.tablon__madera').classList.add('con-ficha'); html.classList.add('ficha-abierta');
+  if (celu.matches) { const r = ficha.getBoundingClientRect(); const falta = r.bottom - (innerHeight - 12); if (falta > 0 || r.top < 0) scrollBy({ top: r.top < 0 ? r.top - 12 : falta, behavior: 'smooth' }); }
   requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.add('visto')));
   ultimo = desde; $('[data-cerrar]', ficha).focus({ preventScroll: true });
   // cupo real: lo que queda libre en la inscripción del kit
@@ -246,7 +252,7 @@ async function abrirFicha(i, desde) {
 }
 function cerrarFicha() {
   if (ficha.hidden) return;
-  ficha.hidden = true; actual = null;
+  ficha.hidden = true; actual = null; $('.tablon__madera').classList.remove('con-ficha'); html.classList.remove('ficha-abierta');
   $$('.lugar').forEach(l => l.classList.remove('activo'));
   ultimo?.focus({ preventScroll: true });
 }
@@ -263,8 +269,17 @@ document.addEventListener('kit:reserva-lista', () => { if (actual) { const i = e
 
 /* ---------- kit ---------- */
 try {
-  window.KIT = await initKit({ config: 'cliente.json', imagenes: false, carrito: { fab: false, label: 'Tu encargo' } });
+  window.KIT = await initKit({ config: 'cliente.json', imagenes: { lqip: 'img/lqip.json' }, carrito: { fab: false, label: 'Tu encargo' } });
   if (window.KIT.eventos) pintarMesa(window.KIT.eventos.proximos());
   window.KIT.carrito?.sync(document);
   contar();
 } catch (err) { console.error('[ru] kit', err); }
+
+/* ---------- índice: la sección actual muestra su nombre (desktop) ---------- */
+const links = $$('.barra a[href^="#"]');
+const secs = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+const ioIdx = new IntersectionObserver(ens => ens.forEach(en => {
+  if (!en.isIntersecting) return;
+  links.forEach(a => a.classList.toggle('activa', a.getAttribute('href') === '#' + en.target.id));
+}), { rootMargin: '-45% 0px -45% 0px' });
+secs.forEach(s => ioIdx.observe(s));

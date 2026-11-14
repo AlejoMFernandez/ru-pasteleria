@@ -104,12 +104,18 @@
      "id": "manana",
      "nombre": "Mañana",
      "desde": "09:00",
-     "hasta": "13:00"
+     "hasta": "12:00"
+    },
+    {
+     "id": "mediodia",
+     "nombre": "Mediodía",
+     "desde": "12:00",
+     "hasta": "16:00"
     },
     {
      "id": "tarde",
      "nombre": "Tarde",
-     "desde": "15:00",
+     "desde": "16:00",
      "hasta": "20:00"
     }
    ]
