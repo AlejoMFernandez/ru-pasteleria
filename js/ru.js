@@ -62,31 +62,7 @@ if (html.classList.contains('con-intro') && intro) {
   });
 } else { abrirHero(); terminarIntro(); }
 
-/* ---------- al scrollear se entra por la puerta ---------- */
 const heroA = $('.heroA');
-if (!reducido) {
-  const puerta = $('.puerta');
-  const manija = $('.puerta__manija'), reja = $('.puerta__reja');
-  const resto = [$('.heroA__texto'), $('.heroA__rotulos'), $('.cartel'), $('.farol')];
-  let pend = false;
-  const pintar = () => {
-    pend = false;
-    const total = heroA.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -heroA.getBoundingClientRect().top / total));
-    if (p > 1.2) return;
-    const ease = p * p * (3 - 2 * p);
-    puerta.style.transform = 'none';
-    const r = puerta.getBoundingClientRect();
-    const S = Math.max(innerWidth / r.width, innerHeight / r.height) * 1.12;
-    const dx = innerWidth / 2 - (r.left + r.width / 2), dy = innerHeight / 2 - (r.top + r.height / 2);
-    puerta.style.transform = p > 0 ? `translate(${dx * ease}px, ${dy * ease}px) scale(${1 + (S - 1) * ease})` : '';
-    const o = Math.max(0, 1 - p * 3);
-    resto.forEach(el => { el.style.opacity = o; el.style.visibility = o < .02 ? 'hidden' : ''; });
-    const om = Math.max(0, 1 - p * 2.2); manija.style.opacity = om; reja.style.opacity = Math.max(0, 1 - p * 1.4);
-  };
-  addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(pintar); } }, { passive: true });
-  addEventListener('resize', () => requestAnimationFrame(pintar));
-}
 
 /* ---------- barra y píldora del panel ---------- */
 const barra = $('[data-barra]');

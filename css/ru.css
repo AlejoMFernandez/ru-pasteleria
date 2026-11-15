@@ -78,8 +78,8 @@ h1,h2,h3,p{margin:0}
 .listo .entra{opacity:1;transform:none;transition:opacity .6s ease calc(var(--d,0)*80ms),transform .7s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*80ms)}
 
 /* ======================= HERO A · la puerta ======================= */
-.heroA{position:relative;height:calc(var(--alto,100svh)*1.78)}
-.heroA__escena{position:sticky;top:0;height:var(--alto,100svh);min-height:640px;overflow:clip;display:grid;
+.heroA{position:relative}
+.heroA__escena{position:relative;height:var(--alto,100svh);min-height:640px;overflow:clip;display:grid;
   grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;padding:calc(env(safe-area-inset-top) + 20px) 22px 28px}
 .pared{position:absolute;inset:0;background:
   repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 76px,rgba(120,110,95,.10) 76px 77px,rgba(255,255,255,.7) 77px 78px),
@@ -437,3 +437,4 @@ html.kit-lock-ru .kit-demo-pill,html.kit-lock-ru .barra{opacity:0;pointer-events
   .hermanas__fotos figure:nth-child(2){transform:translateY(36px)}
 }
 @media (max-width:899px){html:not(.oculta-pill) .barra{opacity:0;pointer-events:none}}
+.pared::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(rgba(244,242,238,0),var(--crema))}
