@@ -27,7 +27,6 @@ function armarPanos(el, c, f) {
 }
 $$('.panos').forEach(p => armarPanos(p));
 armarPanos($('.puerta__reja'), 3, 6);
-armarPanos($('.intro__reja'), 3, 6);
 
 /* ---------- abierto / cerrado (bio + Google Maps) ---------- */
 const HORARIO = { 0: [9, 20], 1: null, 2: [9, 16], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [9, 20] };
@@ -45,7 +44,7 @@ function estado() {
 const e0 = estado();
 $$('[data-estado]').forEach(el => { el.textContent = e0.txt; el.classList.toggle('abierto', e0.abierto); });
 
-/* ---------- intro: la puerta esmerilada se achica hasta la puerta ---------- */
+/* ---------- intro: el logo sobre la pared y la puerta que se despeja ---------- */
 const intro = $('.intro');
 [...$$('.heroA__texto > *'), $('.cartel'), ...$$('.heroA__rotulos li'), $('.farol')].forEach((el, i) => { el.classList.add('entra'); el.style.setProperty('--d', i); });
 const abrirHero = () => { html.classList.add('listo'); $('.puerta').classList.add('visto'); };
@@ -54,11 +53,12 @@ if (html.classList.contains('con-intro') && intro) {
   html.classList.add('trabado');
   const foto = $('.puerta__vista img');
   const fotoLista = foto.complete ? Promise.resolve() : new Promise(r => { foto.onload = foto.onerror = r; });
-  Promise.all([new Promise(r => setTimeout(r, 480)), Promise.race([Promise.all([document.fonts?.ready, fotoLista]), new Promise(r => setTimeout(r, 1100))])]).then(() => {
-    const r = $('.puerta').getBoundingClientRect();
-    intro.classList.add('vuela');
-    intro.style.transform = `translate(${r.left}px, ${r.top}px) scale(${r.width / innerWidth}, ${r.height / innerHeight})`;
-    setTimeout(() => { abrirHero(); intro.classList.add('fuera'); setTimeout(terminarIntro, 220); }, 320);
+  // logo solo sobre crema → se va el logo → se funde la cortina → la puerta se despeja paño por paño → entran los textos
+  Promise.all([new Promise(r => setTimeout(r, 1300)), Promise.race([Promise.all([document.fonts?.ready, fotoLista]), new Promise(r => setTimeout(r, 1900))])]).then(() => {
+    intro.classList.add('sale');
+    setTimeout(() => intro.classList.add('fuera'), 300);
+    setTimeout(abrirHero, 650);
+    setTimeout(terminarIntro, 1100);
   });
 } else { abrirHero(); terminarIntro(); }
 

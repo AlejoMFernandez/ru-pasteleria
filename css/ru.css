@@ -60,17 +60,13 @@ h1,h2,h3,p{margin:0}
 
 /* ======================= INTRO ======================= */
 .intro{display:none}
-.con-intro .intro{display:block;position:fixed;inset:0;z-index:60;background:var(--marco);padding:8px;transform-origin:0 0;
+.con-intro .intro{display:grid;place-items:center;position:fixed;inset:0;z-index:60;background:var(--crema);
   animation:introSeguro 0s linear 5s forwards}
-.intro__reja{position:absolute;inset:8px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,1fr);gap:6px}
-.intro__reja i{background:#ECEDE7}
-.intro__logo{position:absolute;left:50%;top:41.7%;width:min(56vw,340px);transform:translate(-50%,-50%) scale(.94);opacity:0;animation:logoIn .45s ease .05s forwards}
-.intro.vuela{transition:transform .5s cubic-bezier(.65,0,.25,1)}
-.intro.vuela .intro__logo{opacity:0;transition:opacity .15s;animation:none}
-.intro.fuera{opacity:0;transition:opacity .2s;pointer-events:none}
-.intro.disuelve .intro__reja i{opacity:0;transition:opacity .4s ease calc(var(--k,0)*45ms)}
-.intro.disuelve{background:transparent;transition:background .3s}
-@keyframes logoIn{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.intro__logo{width:min(52vw,300px);height:auto;opacity:0;transform:translateY(8px) scale(.97);animation:logoIn .8s cubic-bezier(.2,.7,.2,1) .1s forwards}
+.intro.sale .intro__logo{animation:logoOut .5s ease forwards}
+.intro.fuera{opacity:0;transition:opacity .7s ease;pointer-events:none}
+@keyframes logoIn{to{opacity:1;transform:none}}
+@keyframes logoOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-6px)}}
 @keyframes introSeguro{to{opacity:0;visibility:hidden;pointer-events:none}}
 .con-intro.trabado{overflow:hidden}
 /* entrada del hero después de la intro */
@@ -96,7 +92,7 @@ h1,h2,h3,p{margin:0}
 .puerta__reja{position:absolute;inset:9px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,1fr);pointer-events:none}
 .puerta__reja i{box-shadow:inset 0 0 0 3px var(--marco)}
 .puerta__panos{inset:9px;--c:3;--f:6;gap:6px}
-.puerta__panos i{background:#ECEDE7}
+.puerta__panos i{background:#ECEDE7;transition-duration:.6s}
 .puerta__manija{position:absolute;right:16px;top:50%;width:4px;height:44px;background:#5f6b65;border-radius:2px;z-index:3}
 .farol{position:absolute;z-index:2;width:34px;top:calc(env(safe-area-inset-top) + 44px);left:calc(50% + min(32vw,150px) + 4px)}
 .heroA__texto{order:3;position:relative;z-index:4;display:grid;justify-items:center;text-align:center;gap:12px;margin-top:22px;max-width:30rem}
